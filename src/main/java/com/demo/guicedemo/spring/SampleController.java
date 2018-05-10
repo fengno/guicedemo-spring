@@ -1,18 +1,18 @@
 package com.demo.guicedemo.spring;
 
-import org.springframework.boot.*;
-import org.springframework.boot.autoconfigure.*;
-import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@EnableAutoConfiguration
+@RestController
+@SpringBootApplication
 public class SampleController {
 
-	@RequestMapping("/")
-	@ResponseBody
-	String home() {
-		return "Hello World!";
+	@GetMapping("/hello")
+	String home(@RequestParam("msg") String msg) {
+		return msg;
 	}
 
 	public static void main(String[] args) throws Exception {
