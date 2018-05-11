@@ -1,6 +1,7 @@
 package com.demo.guicedemo.spring;
 
-import com.demo.guicedemo.MyDestination;
+import org.demo.guicedemo.hellodemo.MyDestination;
+
 import com.google.inject.servlet.RequestScoped;
 
 @RequestScoped

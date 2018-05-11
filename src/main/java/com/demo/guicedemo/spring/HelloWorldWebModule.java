@@ -1,9 +1,10 @@
 package com.demo.guicedemo.spring;
 
-import com.demo.guicedemo.MyApplet;
-import com.demo.guicedemo.MyDestination;
-import com.demo.guicedemo.Output;
-import com.demo.guicedemo.StringWritingApplet;
+import org.demo.guicedemo.MyApplet;
+import org.demo.guicedemo.hellodemo.MyDestination;
+import org.demo.guicedemo.hellodemo.Output;
+import org.demo.guicedemo.hellodemo.StringWritingApplet;
+
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.servlet.ServletModule;
