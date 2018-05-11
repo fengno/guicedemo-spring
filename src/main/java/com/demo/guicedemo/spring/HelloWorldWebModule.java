@@ -18,8 +18,9 @@ public class HelloWorldWebModule extends AbstractModule {
 		bind(MyDestination.class).to(WebDestination.class);
 	}
 	
-	@Provides @Output String getOutputString(RequestParams params) {
-		return params.getGreetingName();
+	@Provides @Output String getOutputString(GreetingGenerator generator) {
+//		return "hello " + params.getGreetingName(); // 其中hello属于业务逻辑，建议分离
+		return generator.getGreetingMessage();
 	}
 
 }
