@@ -1,6 +1,5 @@
 package com.demo.guicedemo.spring;
 
-import org.demo.guicedemo.MyApplet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,35 +22,19 @@ public class SampleController {
 	Injector injector(ApplicationContext context) {
 		return Guice.createInjector(new HelloWorldWebModule(), new SpringAwareModule(context));
 	}
-	
-	@Bean
-	@RequestScope
-	MyApplet applet(Injector injector) {
-		return injector.getInstance(MyApplet.class);
-	}
-	@Bean
-	@RequestScope
-	WebDestination destination(Injector injector) {
-		return injector.getInstance(WebDestination.class);
-	}
-	@Bean
-	@RequestScope
-	RequestParams params(Injector injector) {
-		return injector.getInstance(RequestParams.class);
-	}
-	
-	@Autowired
-	MyApplet applet;
-	@Autowired
-	WebDestination destination;
-	@Autowired
-	RequestParams params;
 
-	@GetMapping("/hello")
-	String home(@RequestParam("msg") String msg) {
-		params.setMessage(msg);
-		applet.run();
-		return destination.getResult();
+	@Bean
+	@RequestScope
+	GreetingHandler greetingHandler(Injector injector) {
+		return injector.getInstance(GreetingHandler.class);
+	}
+	
+	@Autowired
+	GreetingHandler greetingHandler;
+
+	@GetMapping("/greeting")
+	String greeting(@RequestParam("name") String name) {
+		return greetingHandler.getByName(name);
 	}
 
 	public static void main(String[] args) throws Exception {

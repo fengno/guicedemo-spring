@@ -19,7 +19,7 @@ public class HelloWorldWebModule extends AbstractModule {
 	}
 	
 	@Provides @Output String getOutputString(RequestParams params) {
-		return params.getMessage();
+		return params.getGreetingName();
 	}
 
 }
