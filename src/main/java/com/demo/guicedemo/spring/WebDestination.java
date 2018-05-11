@@ -1,9 +1,9 @@
 package com.demo.guicedemo.spring;
 
 import com.demo.guicedemo.MyDestination;
-import com.google.inject.Singleton;
+import com.google.inject.servlet.RequestScoped;
 
-@Singleton
+@RequestScoped
 public class WebDestination implements MyDestination {
 	private StringBuilder sb = new StringBuilder();
 	

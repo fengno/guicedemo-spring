@@ -1,8 +1,8 @@
 package com.demo.guicedemo.spring;
 
-import com.google.inject.Singleton;
+import com.google.inject.servlet.RequestScoped;
 
-@Singleton
+@RequestScoped
 public class RequestParams {
 
 	private String message;

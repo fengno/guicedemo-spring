@@ -3,6 +3,7 @@ package com.demo.guicedemo.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +16,7 @@ import com.google.inject.Injector;
 
 @RestController
 @SpringBootApplication
+@ServletComponentScan
 public class SampleController {
 	@Bean
 	Injector injector() {
@@ -22,14 +24,17 @@ public class SampleController {
 	}
 	
 	@Bean
+	@RequestScope
 	MyApplet applet(Injector injector) {
 		return injector.getInstance(MyApplet.class);
 	}
 	@Bean
+	@RequestScope
 	WebDestination destination(Injector injector) {
 		return injector.getInstance(WebDestination.class);
 	}
 	@Bean
+	@RequestScope
 	RequestParams params(Injector injector) {
 		return injector.getInstance(RequestParams.class);
 	}
