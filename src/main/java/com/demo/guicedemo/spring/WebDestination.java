@@ -8,19 +8,16 @@ import com.google.inject.servlet.RequestScoped;
 @RequestScoped
 public class WebDestination implements MyDestination {
 	private final StringBuilder sb;
-	private final SampleDao dao;
 	
 	@Inject
-	public WebDestination(SampleDao dao) {
+	public WebDestination() {
 		System.out.println(getClass() + " constructed.");
-		this.dao = dao;
 		this.sb = new StringBuilder();
 	}
 
 	@Override
 	public void write(String string) {
 		sb.append(string);
-		dao.save(string);
 	}
 
 	public String getResult() {

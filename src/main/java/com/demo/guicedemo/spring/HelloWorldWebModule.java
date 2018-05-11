@@ -6,7 +6,6 @@ import org.demo.guicedemo.hellodemo.Output;
 import org.demo.guicedemo.hellodemo.StringWritingApplet;
 
 import com.google.inject.AbstractModule;
-import com.google.inject.Provides;
 import com.google.inject.servlet.ServletModule;
 
 public class HelloWorldWebModule extends AbstractModule {
@@ -16,11 +15,12 @@ public class HelloWorldWebModule extends AbstractModule {
 		install(new ServletModule());
 		bind(MyApplet.class).to(StringWritingApplet.class);
 		bind(MyDestination.class).to(WebDestination.class);
+		bind(String.class).annotatedWith(Output.class).toProvider(GreetingMessageProvider.class);
 	}
 	
-	@Provides @Output String getOutputString(GreetingGenerator generator) {
+/*	@Provides @Output String getOutputString(GreetingMessageProvider generator) {
 //		return "hello " + params.getGreetingName(); // 其中hello属于业务逻辑，建议分离
-		return generator.getGreetingMessage();
-	}
+		return generator.get();
+	}*/
 
 }
