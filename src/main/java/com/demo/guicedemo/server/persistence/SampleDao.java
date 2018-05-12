@@ -1,4 +1,4 @@
-package com.demo.guicedemo.spring;
+package com.demo.guicedemo.server.persistence;
 
 import org.springframework.stereotype.Component;
 
