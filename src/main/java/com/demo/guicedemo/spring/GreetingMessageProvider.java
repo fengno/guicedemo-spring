@@ -17,7 +17,7 @@ public class GreetingMessageProvider implements Provider<String> {
 	@Override
 	public String get() {
 		String name = params.getGreetingName();
-		dao.save(name);
+		dao.getPersonData(name);
 		return "Hello " + name;
 	}
 }
